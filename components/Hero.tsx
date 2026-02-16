@@ -69,17 +69,25 @@ const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-black mb-8 leading-[1.1] tracking-tight text-white uppercase whitespace-pre-line">
-            {titleWords.map((word, idx) => (
-              <span key={`${word}-${idx}`}>
-                {idx === titleWords.length - 1 ? (
-                  <span className="fire-gradient">{word} </span>
-                ) : (
-                  <>{word} </>
-                )}
-                {idx < titleWords.length - 1 && <br />}
-              </span>
-            ))}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-orbitron font-black mb-8 leading-[1.1] tracking-tight text-white uppercase whitespace-pre-line">
+            {titleWords.length === 3 ? (
+              <>
+                <span>{titleWords[0]} {titleWords[1]}</span>
+                <br />
+                <span className="fire-gradient">{titleWords[2]}</span>
+              </>
+            ) : (
+              titleWords.map((word, idx) => (
+                <span key={`${word}-${idx}`}>
+                  {idx === titleWords.length - 1 ? (
+                    <span className="fire-gradient">{word} </span>
+                  ) : (
+                    <>{word} </>
+                  )}
+                  {idx < titleWords.length - 1 && <br />}
+                </span>
+              ))
+            )}
             <span className="block mt-2">$FireHorse</span>
           </h1>
 

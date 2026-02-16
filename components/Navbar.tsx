@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage, LanguageCode } from '../context/LanguageContext';
@@ -20,6 +19,7 @@ const Navbar: React.FC = () => {
     { name: t('navAbout'), href: '#about' },
     { name: t('navTokenomics'), href: '#tokenomics' },
     { name: t('navChart'), href: '#chart' },
+    { name: t('navHowToBuy'), href: '#how-to-buy' },
   ];
 
   const toggleMenu = () => {
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
               className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
             />
           </div>
-          <span className="font-orbitron font-bold text-xl tracking-tighter text-white group-hover:text-orange-500 transition-colors duration-300 uppercase">
+          <span className="font-orbitron font-bold text-lg md:text-xl tracking-tighter text-white group-hover:text-orange-500 transition-colors duration-300 uppercase">
             Year of the horse
           </span>
         </div>

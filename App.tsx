@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Tokenomics from './components/Tokenomics';
 import ChartSection from './components/ChartSection';
+import HowToBuy from './components/HowToBuy';
 import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
 import CustomCursor from './components/CustomCursor';
@@ -67,6 +68,7 @@ const App: React.FC = () => {
               <About />
               <Tokenomics />
               <ChartSection />
+              <HowToBuy />
             </main>
             <Footer />
           </motion.div>
