@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { useLanguage } from '../context/LanguageContext';
 
-const data = [
+const chartData = [
   { name: 'Community & LP', value: 100, color: '#f97316' },
 ];
 
@@ -41,12 +40,12 @@ const Tokenomics: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="h-[400px] relative"
+            className="h-[400px] min-h-[400px] w-full relative"
           >
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" minHeight={400}>
               <PieChart>
                 <Pie
-                  data={data}
+                  data={chartData}
                   cx="50%"
                   cy="50%"
                   innerRadius={110}
@@ -55,11 +54,11 @@ const Tokenomics: React.FC = () => {
                   dataKey="value"
                   stroke="none"
                 >
-                  {data.map((entry, index) => (
+                  {chartData.map((entry, index) => (
                     <Cell 
                       key={`cell-${index}`} 
                       fill={entry.color} 
-                      className="hover:opacity-80 transition-opacity cursor-pointer shadow-[0_0_40px_rgba(249,115,22,0.4)]"
+                      className="cursor-pointer"
                     />
                   ))}
                 </Pie>
@@ -71,14 +70,14 @@ const Tokenomics: React.FC = () => {
             </ResponsiveContainer>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
               <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest mb-1">{t('totalSupply')}</span>
-              <span className="text-white font-orbitron text-3xl font-bold">1,000,000,000</span>
+              <span className="text-white font-orbitron text-3xl font-bold">1B</span>
             </div>
           </motion.div>
 
           <div className="grid gap-6">
             {details.map((item, idx) => (
               <motion.div
-                key={item.label}
+                key={idx}
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

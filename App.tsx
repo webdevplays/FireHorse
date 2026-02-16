@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -15,7 +14,7 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate high-end assets loading
+    // Simulate asset loading
     const timer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -23,18 +22,18 @@ const App: React.FC = () => {
   return (
     <LanguageProvider>
       <div className="relative bg-[#0b0b0f] min-h-screen selection:bg-orange-500/30">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {isLoading ? (
             <motion.div
               key="loader"
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
               className="fixed inset-0 z-[100] bg-[#0b0b0f] flex flex-col items-center justify-center"
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
                 className="relative"
               >
                 <div className="w-24 h-24 border-t-2 border-orange-500 rounded-full animate-spin" />
@@ -51,26 +50,27 @@ const App: React.FC = () => {
                 Awakening the Fire...
               </motion.p>
             </motion.div>
-          ) : (
-            <motion.div
-              key="content"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <CustomCursor />
-              <ParticlesBackground />
-              <Navbar />
-              <main>
-                <Hero />
-                <About />
-                <Tokenomics />
-                <ChartSection />
-              </main>
-              <Footer />
-            </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
+
+        {!isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <CustomCursor />
+            <ParticlesBackground />
+            <Navbar />
+            <main>
+              <Hero />
+              <About />
+              <Tokenomics />
+              <ChartSection />
+            </main>
+            <Footer />
+          </motion.div>
+        )}
       </div>
     </LanguageProvider>
   );

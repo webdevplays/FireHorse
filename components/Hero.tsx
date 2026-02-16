@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
+  const title = t('heroTitle') || 'RIDE THE STORM';
+  const titleWords = title.split(' ');
 
   return (
     <section className="relative min-h-screen w-full flex flex-col md:flex-row items-center overflow-hidden pt-20">
@@ -46,33 +47,13 @@ const Hero: React.FC = () => {
             />
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-500/5 via-transparent to-white/5 pointer-events-none" />
           </motion.div>
-
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  y: [-20, -100],
-                  x: [0, (i % 2 === 0 ? 30 : -30)],
-                  opacity: [0, 1, 0],
-                  scale: [0, 1.5, 0]
-                }}
-                transition={{
-                  duration: 2 + Math.random() * 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 2
-                }}
-                className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-orange-400 rounded-full blur-[1px]"
-              />
-            ))}
-          </div>
         </div>
       </div>
 
       {/* Right Side: Content */}
       <div className="relative w-full md:w-1/2 h-auto md:h-full z-20 flex flex-col justify-center px-8 md:px-16 lg:px-24 text-center md:text-left py-12 md:py-0">
         <motion.div
-          key={t('heroTitle')} // Trigger re-animation on lang change
+          key={title} 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -80,7 +61,6 @@ const Hero: React.FC = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
             className="flex items-center justify-center md:justify-start gap-3 mb-6"
           >
             <div className="w-8 h-[1px] bg-orange-500" />
@@ -90,8 +70,17 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-black mb-8 leading-[1.1] tracking-tight text-white uppercase whitespace-pre-line">
-            {t('heroTitle').includes(' ') ? t('heroTitle').split(' ').map((w,i) => i === 2 ? <><span className="fire-gradient">{w}</span><br/></> : <>{w} <br/></>) : <span className="fire-gradient">{t('heroTitle')}</span>}
-            $FireHorse
+            {titleWords.map((word, idx) => (
+              <span key={`${word}-${idx}`}>
+                {idx === titleWords.length - 1 ? (
+                  <span className="fire-gradient">{word} </span>
+                ) : (
+                  <>{word} </>
+                )}
+                {idx < titleWords.length - 1 && <br />}
+              </span>
+            ))}
+            <span className="block mt-2">$FireHorse</span>
           </h1>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-lg mb-12 font-light leading-relaxed mx-auto md:mx-0">
