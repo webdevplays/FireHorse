@@ -59,7 +59,7 @@ const About: React.FC = () => {
 
           <div className="relative w-full h-full glass-card rounded-3xl overflow-hidden group">
             <img 
-              src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?q=80&w=2070&auto=format&fit=crop" 
+              src="https://69910958681c79fa0bcd324c.imgix.net/about.jpg" 
               alt="FireHorse Energy" 
               className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0"
             />
