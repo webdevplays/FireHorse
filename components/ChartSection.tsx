@@ -1,15 +1,18 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const ChartSection: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="chart" className="relative py-32 px-6 bg-[#0b0b0f]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
           <div>
-            <span className="text-orange-500 font-orbitron text-xs tracking-widest uppercase mb-2 block">Live Intelligence</span>
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-white uppercase">Ignition Tracker</h2>
+            <span className="text-orange-500 font-orbitron text-xs tracking-widest uppercase mb-2 block">{t('chartIntel')}</span>
+            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-white uppercase">{t('chartTitle')}</h2>
           </div>
           <div className="glass-card px-8 py-4 rounded-2xl flex gap-12 border-orange-500/30 shadow-[0_0_30px_rgba(249,115,22,0.1)]">
             <div>
@@ -22,10 +25,6 @@ const ChartSection: React.FC = () => {
                 </span>
               </div>
             </div>
-            <div>
-              <p className="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Status</p>
-              <span className="text-orange-500 font-orbitron font-bold text-sm">CONNECTED</span>
-            </div>
           </div>
         </div>
 
@@ -35,21 +34,18 @@ const ChartSection: React.FC = () => {
           viewport={{ once: true }}
           className="relative glass-card rounded-[32px] overflow-hidden p-1 border-orange-500/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
         >
-          {/* Decorative Glow Background behind the embed */}
           <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/10 via-transparent to-red-500/10 pointer-events-none z-0" />
-          
           <div className="relative z-10 w-full rounded-[31px] overflow-hidden bg-black/40">
-            {/* DexScreener Embed Integration - Reduced Height */}
             <style>
               {`
                 #dexscreener-embed {
                   position: relative;
                   width: 100%;
-                  padding-bottom: 80%; /* Reduced from 125% */
+                  padding-bottom: 80%;
                 }
                 @media(min-width:1400px) {
                   #dexscreener-embed {
-                    padding-bottom: 45%; /* Reduced from 65% */
+                    padding-bottom: 45%;
                   }
                 }
                 #dexscreener-embed iframe {
@@ -70,16 +66,6 @@ const ChartSection: React.FC = () => {
             </div>
           </div>
         </motion.div>
-        
-        {/* Sub-chart Info */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <button className="px-6 py-2 rounded-full border border-orange-500/20 text-orange-500 font-orbitron text-[10px] tracking-widest hover:bg-orange-500/10 transition-all uppercase">
-            Expand View
-          </button>
-          <button className="px-6 py-2 rounded-full border border-orange-500/20 text-orange-500 font-orbitron text-[10px] tracking-widest hover:bg-orange-500/10 transition-all uppercase">
-            Trade on DEX
-          </button>
-        </div>
       </div>
     </section>
   );

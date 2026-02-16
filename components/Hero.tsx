@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen w-full flex flex-col md:flex-row items-center overflow-hidden pt-20">
       {/* Background Decorative Glows */}
@@ -12,8 +15,6 @@ const Hero: React.FC = () => {
       {/* Left Side: Cinematic Emblem Logo */}
       <div className="relative w-full md:w-1/2 h-[50vh] md:h-full z-10 flex items-center justify-center p-8 md:p-12">
         <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
-          
-          {/* Multi-layered Glowing Auras */}
           <motion.div 
             animate={{ 
               scale: [1, 1.1, 1],
@@ -31,7 +32,6 @@ const Hero: React.FC = () => {
             className="absolute inset-4 bg-red-500/20 blur-[60px] rounded-full"
           />
 
-          {/* The Fire Horse Emblem */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -39,18 +39,14 @@ const Hero: React.FC = () => {
             whileHover={{ scale: 1.02 }}
             className="relative z-20 w-full h-full drop-shadow-[0_0_50px_rgba(249,115,22,0.4)]"
           >
-            {/* Using the provided high-fidelity image */}
             <img 
               src="https://69910958681c79fa0bcd324c.imgix.net/logo22.png" 
               alt="Year of the horse Fire Horse" 
               className="w-full h-full object-contain animate-float"
             />
-            
-            {/* Metallic Inner Glow Reflection Overlay */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-orange-500/5 via-transparent to-white/5 pointer-events-none" />
           </motion.div>
 
-          {/* Particle Sparks around logo */}
           <div className="absolute inset-0 pointer-events-none">
             {[...Array(6)].map((_, i) => (
               <motion.div
@@ -76,30 +72,30 @@ const Hero: React.FC = () => {
       {/* Right Side: Content */}
       <div className="relative w-full md:w-1/2 h-auto md:h-full z-20 flex flex-col justify-center px-8 md:px-16 lg:px-24 text-center md:text-left py-12 md:py-0">
         <motion.div
+          key={t('heroTitle')} // Trigger re-animation on lang change
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.2 }}
             className="flex items-center justify-center md:justify-start gap-3 mb-6"
           >
             <div className="w-8 h-[1px] bg-orange-500" />
             <span className="text-orange-500 font-orbitron tracking-[0.4em] text-xs uppercase font-bold">
-              EST. 2026 • Year of the horse PROTOCOL
+              {t('heroTag')}
             </span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-black mb-8 leading-[1.1] tracking-tight text-white uppercase">
-            RIDE <br />
-            THE <span className="fire-gradient">STORM</span> <br />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-orbitron font-black mb-8 leading-[1.1] tracking-tight text-white uppercase whitespace-pre-line">
+            {t('heroTitle').includes(' ') ? t('heroTitle').split(' ').map((w,i) => i === 2 ? <><span className="fire-gradient">{w}</span><br/></> : <>{w} <br/></>) : <span className="fire-gradient">{t('heroTitle')}</span>}
             $FireHorse
           </h1>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-lg mb-12 font-light leading-relaxed mx-auto md:mx-0">
-            Harness the unstoppable spirit of the Fire Horse. 100% community-owned, zero compromises, pure adrenaline.
+            {t('heroSubtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start items-center">
@@ -108,14 +104,14 @@ const Hero: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-black font-orbitron font-bold rounded-full transition-shadow duration-300 tracking-wider text-sm shadow-[0_0_20px_rgba(249,115,22,0.3)]"
             >
-              BUY $FireHorse
+              {t('buyBtn')}
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05, borderColor: 'rgba(249, 115, 22, 0.8)', backgroundColor: 'rgba(249, 115, 22, 0.05)' }}
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto px-12 py-5 border border-orange-500/30 text-white font-orbitron font-bold rounded-full backdrop-blur-md transition-all duration-300 text-sm tracking-wider"
             >
-              WHITEPAPER
+              {t('whitepaper')}
             </motion.button>
           </div>
         </motion.div>
@@ -127,7 +123,7 @@ const Hero: React.FC = () => {
         transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
         className="absolute bottom-12 right-12 hidden md:flex flex-col items-center gap-4 opacity-40 hover:opacity-100 transition-opacity cursor-pointer"
       >
-        <span className="font-orbitron text-[9px] tracking-[0.3em] text-orange-500 uppercase vertical-text" style={{ writingMode: 'vertical-rl' }}>Scroll Down</span>
+        <span className="font-orbitron text-[9px] tracking-[0.3em] text-orange-500 uppercase vertical-text" style={{ writingMode: 'vertical-rl' }}>{t('scrollDown')}</span>
         <div className="w-[1px] h-16 bg-gradient-to-b from-orange-500 to-transparent" />
       </motion.div>
     </section>

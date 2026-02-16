@@ -2,18 +2,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { useLanguage } from '../context/LanguageContext';
 
 const data = [
   { name: 'Community & LP', value: 100, color: '#f97316' },
 ];
 
 const Tokenomics: React.FC = () => {
+  const { t } = useLanguage();
+
   const details = [
-    { label: 'Token Name', value: 'Year of the horse', color: 'text-white' },
-    { label: 'Ticker', value: '$FireHorse', color: 'text-orange-500' },
-    { label: 'Total Supply', value: '1,000,000,000', color: 'text-white' },
-    { label: 'Liquidity', value: '100% BURNED', color: 'text-red-500' },
-    { label: 'Contract', value: 'REVOKED', color: 'text-green-500' },
+    { label: t('tokenomicsTitle'), value: 'Year of the horse', color: 'text-white' },
+    { label: t('ticker'), value: '$FireHorse', color: 'text-orange-500' },
+    { label: t('totalSupply'), value: '1,000,000,000', color: 'text-white' },
+    { label: t('liquidity'), value: t('burned'), color: 'text-red-500' },
+    { label: t('contract'), value: t('revoked'), color: 'text-green-500' },
   ];
 
   return (
@@ -26,15 +29,14 @@ const Tokenomics: React.FC = () => {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-orbitron font-bold mb-6"
           >
-            Year of the horse <span className="text-orange-500">($FireHorse)</span>
+            {t('tokenomicsTitle')} <span className="text-orange-500">($FireHorse)</span>
           </motion.h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            A fair launch protocol with zero team allocation and absolute security. The horse has no master.
+            {t('tokenomicsDesc')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -67,13 +69,12 @@ const Tokenomics: React.FC = () => {
                 />
               </PieChart>
             </ResponsiveContainer>
-            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-              <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest mb-1">Total Supply</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+              <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest mb-1">{t('totalSupply')}</span>
               <span className="text-white font-orbitron text-3xl font-bold">1,000,000,000</span>
             </div>
           </motion.div>
 
-          {/* Stats List */}
           <div className="grid gap-6">
             {details.map((item, idx) => (
               <motion.div
@@ -93,27 +94,16 @@ const Tokenomics: React.FC = () => {
                     </p>
                   </div>
                 </div>
-                {item.label === 'Contract' && (
-                  <div className="px-3 py-1 bg-green-500/10 border border-green-500/30 rounded text-green-500 text-[10px] font-orbitron animate-pulse">
-                    SECURED
-                  </div>
-                )}
-                {item.label === 'Liquidity' && (
-                  <div className="px-3 py-1 bg-red-500/10 border border-red-500/30 rounded text-red-500 text-[10px] font-orbitron">
-                    RUG-PROOF
-                  </div>
-                )}
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Bottom Cards */}
         <div className="grid md:grid-cols-3 gap-8 mt-24">
           {[
-            { label: 'Buy Tax', value: '0%', desc: 'No friction for the pack' },
-            { label: 'Sell Tax', value: '0%', desc: 'Full freedom of movement' },
-            { label: 'Status', value: 'VERIFIED', desc: 'Immutable on-chain code' },
+            { label: t('buyTax'), value: '0%', desc: 'No friction for the pack' },
+            { label: t('sellTax'), value: '0%', desc: 'Full freedom of movement' },
+            { label: t('status'), value: t('verified'), desc: 'Immutable on-chain code' },
           ].map((stat, i) => (
             <motion.div
               key={i}

@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage, LanguageCode } from '../context/LanguageContext';
 
-const languages = [
+const languages: { code: LanguageCode; name: string }[] = [
   { code: 'EN', name: 'English' },
   { code: 'ZH', name: '中文' },
   { code: 'JA', name: '日本語' },
@@ -12,13 +13,13 @@ const languages = [
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState('EN');
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Tokenomics', href: '#tokenomics' },
-    { name: 'Live Chart', href: '#chart' },
+    { name: t('navAbout'), href: '#about' },
+    { name: t('navTokenomics'), href: '#tokenomics' },
+    { name: t('navChart'), href: '#chart' },
   ];
 
   const toggleMenu = () => {
@@ -71,7 +72,7 @@ const Navbar: React.FC = () => {
           <div className="w-10 h-10 relative group-hover:scale-110 transition-transform duration-300 ease-out">
             <img 
               src="https://69910958681c79fa0bcd324c.imgix.net/logo22.png" 
-              alt="Year of the horse Logo" 
+              alt="Logo" 
               className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
             />
           </div>
@@ -105,7 +106,7 @@ const Navbar: React.FC = () => {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h18" />
                 </svg>
-                {selectedLang}
+                {language}
                 <svg className={`w-3 h-3 transition-transform ${langDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -123,10 +124,10 @@ const Navbar: React.FC = () => {
                       <button
                         key={lang.code}
                         onClick={() => {
-                          setSelectedLang(lang.code);
+                          setLanguage(lang.code);
                           setLangDropdownOpen(false);
                         }}
-                        className={`w-full px-4 py-2 text-left text-xs font-orbitron transition-colors hover:bg-orange-500/10 ${selectedLang === lang.code ? 'text-orange-500 bg-orange-500/5' : 'text-gray-400'}`}
+                        className={`w-full px-4 py-2 text-left text-xs font-orbitron transition-colors hover:bg-orange-500/10 ${language === lang.code ? 'text-orange-500 bg-orange-500/5' : 'text-gray-400'}`}
                       >
                         {lang.name}
                       </button>
@@ -149,7 +150,7 @@ const Navbar: React.FC = () => {
             ))}
 
             <button className="px-6 py-2 bg-orange-500/10 border border-orange-500/50 rounded-full font-orbitron text-sm text-orange-500 hover:bg-orange-500 hover:text-black transition-all duration-300 shadow-[0_0_10px_rgba(249,115,22,0.2)]">
-              BUY $FireHorse
+              {t('buyBtn')}
             </button>
           </div>
         </div>
@@ -220,8 +221,8 @@ const Navbar: React.FC = () => {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => setSelectedLang(lang.code)}
-                      className={`px-3 py-2 rounded-lg border font-orbitron text-xs transition-all ${selectedLang === lang.code ? 'border-orange-500 text-orange-500 bg-orange-500/10' : 'border-white/10 text-gray-500'}`}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`px-3 py-2 rounded-lg border font-orbitron text-xs transition-all ${language === lang.code ? 'border-orange-500 text-orange-500 bg-orange-500/10' : 'border-white/10 text-gray-500'}`}
                     >
                       {lang.name}
                     </button>
@@ -254,7 +255,7 @@ const Navbar: React.FC = () => {
                   transition={{ delay: 0.7 }}
                   className="w-full py-6 bg-orange-600 text-black font-orbitron font-black text-2xl rounded-2xl shadow-[0_10px_40px_rgba(249,115,22,0.4)] uppercase active:scale-95 transition-transform"
                 >
-                  BUY $FireHorse
+                  {t('buyBtn')}
                 </motion.button>
 
                 <p className="text-center text-gray-700 font-orbitron text-[10px] tracking-[0.4em] uppercase">

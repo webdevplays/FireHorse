@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
   const contractAddress = "0x0000000000000000000000000000000000000000";
 
   const handleCopy = () => {
@@ -25,19 +27,19 @@ const Footer: React.FC = () => {
               <div className="w-12 h-12 relative group-hover:scale-110 transition-transform duration-300">
                 <img 
                   src="https://69910958681c79fa0bcd324c.imgix.net/logo22.png" 
-                  alt="Year of the horse Footer Logo" 
+                  alt="Logo" 
                   className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(249,115,22,0.4)]"
                 />
               </div>
-              <span className="font-orbitron font-bold text-2xl tracking-tighter text-white uppercase">Year of the horse</span>
+              <span className="font-orbitron font-bold text-2xl tracking-tighter text-white uppercase">{t('tokenomicsTitle')}</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Unleash the spirit of the Fire Horse. Year of the horse is a decentralized community project built for the bold and the unbridled.
+              {t('footerDesc')}
             </p>
           </div>
 
           <div className="flex flex-col gap-4 w-full md:w-auto">
-            <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest">Contract Address</span>
+            <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest">{t('contract')} Address</span>
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <div className="w-full sm:w-80 px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-xs text-gray-400 flex items-center justify-center sm:justify-start">
                 {contractAddress.slice(0, 10)}...{contractAddress.slice(-10)}
@@ -65,15 +67,15 @@ const Footer: React.FC = () => {
             ))}
           </div>
 
-          <p className="text-gray-600 text-xs font-orbitron">
-            © 2026 Year of the horse PROTOCOL. ALL RIGHTS RESERVED.
+          <p className="text-gray-600 text-xs font-orbitron uppercase">
+            © 2026 {t('tokenomicsTitle')} PROTOCOL. ALL RIGHTS RESERVED.
           </p>
 
           <button 
             onClick={scrollToTop}
             className="group flex items-center gap-3 text-gray-500 hover:text-orange-500 transition-colors"
           >
-            <span className="font-orbitron text-[10px] uppercase tracking-widest">Back to top</span>
+            <span className="font-orbitron text-[10px] uppercase tracking-widest">{t('backToTop')}</span>
             <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-orange-500 group-hover:scale-110 transition-all">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -82,9 +84,6 @@ const Footer: React.FC = () => {
           </button>
         </div>
       </div>
-      
-      {/* Footer Ambient Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-orange-600/5 blur-[80px] rounded-full pointer-events-none" />
     </footer>
   );
 };
