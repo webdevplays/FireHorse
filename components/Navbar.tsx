@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
     { name: t('navHowToBuy'), href: '#how-to-buy' },
   ];
 
-  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
+  const buyLink = "https://jup.ag/swap/SOL-Fih1HyuroTaaEEWdZxQ3XwGTxx1LWJoQDPUqRXzxpump";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

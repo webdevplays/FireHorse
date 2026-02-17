@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const { t } = useLanguage();
-  const contractAddress = "ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
+  const contractAddress = "Fih1HyuroTaaEEWdZxQ3XwGTxx1LWJoQDPUqRXzxpump";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);

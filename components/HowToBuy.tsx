@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 const HowToBuy: React.FC = () => {
   const { t } = useLanguage();
-  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
+  const buyLink = "https://jup.ag/swap/SOL-Fih1HyuroTaaEEWdZxQ3XwGTxx1LWJoQDPUqRXzxpump";
 
   const steps = [
     {

@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
   const title = t('heroTitle') || 'RIDE THE STORM';
   const titleWords = title.split(' ');
-  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
+  const buyLink = "https://jup.ag/swap/SOL-Fih1HyuroTaaEEWdZxQ3XwGTxx1LWJoQDPUqRXzxpump";
 
   return (
     <section className="relative min-h-screen w-full flex flex-col md:flex-row items-center overflow-hidden pt-20">
