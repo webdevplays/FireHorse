@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
@@ -17,6 +16,13 @@ const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const socialLinks = [
+    { name: 'Twitter', href: 'https://x.com/Firehorsepf' },
+    { name: 'Telegram', href: '#' },
+    { name: 'Medium', href: '#' },
+    { name: 'Github', href: '#' },
+  ];
 
   return (
     <footer className="relative pt-20 pb-12 px-6 border-t border-orange-500/10 bg-[#0b0b0f]">
@@ -56,13 +62,15 @@ const Footer: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-8">
           <div className="flex gap-8">
-            {['Twitter', 'Telegram', 'Medium', 'Github'].map((social) => (
+            {socialLinks.map((social) => (
               <a 
-                key={social} 
-                href="#" 
+                key={social.name} 
+                href={social.href} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-orange-500 font-orbitron text-xs uppercase tracking-widest transition-colors"
               >
-                {social}
+                {social.name}
               </a>
             ))}
           </div>
