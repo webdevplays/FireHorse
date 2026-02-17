@@ -37,16 +37,25 @@ const App: React.FC = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 className="relative"
               >
-                <div className="w-24 h-24 border-t-2 border-orange-500 rounded-full animate-spin" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-orange-500 font-orbitron text-xl font-bold">F</span>
+                <div className="w-32 h-32 border-t-2 border-orange-500 rounded-full animate-spin" />
+                <div className="absolute inset-0 flex items-center justify-center p-4">
+                  <motion.img 
+                    src="https://69910958681c79fa0bcd324c.imgix.net/logo22.png" 
+                    alt="Loading Logo" 
+                    className="w-16 h-16 object-contain"
+                    animate={{ 
+                      scale: [0.9, 1.1, 0.9],
+                      filter: ["drop-shadow(0 0 5px rgba(249,115,22,0.4))", "drop-shadow(0 0 15px rgba(249,115,22,0.8))", "drop-shadow(0 0 5px rgba(249,115,22,0.4))"]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
                 </div>
               </motion.div>
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="mt-6 text-orange-500 font-orbitron tracking-[0.3em] uppercase text-sm"
+                className="mt-8 text-orange-500 font-orbitron tracking-[0.3em] uppercase text-xs font-bold"
               >
                 Awakening the Fire...
               </motion.p>
