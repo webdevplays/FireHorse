@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 const HowToBuy: React.FC = () => {
   const { t } = useLanguage();
+  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
 
   const steps = [
     {
@@ -101,9 +102,14 @@ const HowToBuy: React.FC = () => {
           transition={{ delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <button className="px-12 py-5 bg-orange-600 text-black font-orbitron font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_40px_rgba(249,115,22,0.3)] uppercase tracking-widest text-sm">
+          <a 
+            href={buyLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-12 py-5 bg-orange-600 text-black font-orbitron font-bold rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_40px_rgba(249,115,22,0.3)] uppercase tracking-widest text-sm"
+          >
             {t('buyBtn')}
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

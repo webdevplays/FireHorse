@@ -22,6 +22,8 @@ const Navbar: React.FC = () => {
     { name: t('navHowToBuy'), href: '#how-to-buy' },
   ];
 
+  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     if (!isOpen) {
@@ -151,9 +153,14 @@ const Navbar: React.FC = () => {
               </motion.a>
             ))}
 
-            <button className="px-6 py-2 bg-orange-500/10 border border-orange-500/50 rounded-full font-orbitron text-sm text-orange-500 hover:bg-orange-500 hover:text-black transition-all duration-300 shadow-[0_0_10px_rgba(249,115,22,0.2)]">
+            <a 
+              href={buyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 bg-orange-500/10 border border-orange-500/50 rounded-full font-orbitron text-sm text-orange-500 hover:bg-orange-500 hover:text-black transition-all duration-300 shadow-[0_0_10px_rgba(249,115,22,0.2)]"
+            >
               {t('buyBtn')}
-            </button>
+            </a>
           </div>
         </div>
 
@@ -253,14 +260,17 @@ const Navbar: React.FC = () => {
                   ))}
                 </motion.div>
 
-                <motion.button
+                <motion.a
+                  href={buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
-                  className="w-full py-6 bg-orange-600 text-black font-orbitron font-black text-2xl rounded-2xl shadow-[0_10px_40px_rgba(249,115,22,0.4)] uppercase active:scale-95 transition-transform"
+                  className="w-full py-6 bg-orange-600 text-black flex items-center justify-center font-orbitron font-black text-2xl rounded-2xl shadow-[0_10px_40px_rgba(249,115,22,0.4)] uppercase active:scale-95 transition-transform"
                 >
                   {t('buyBtn')}
-                </motion.button>
+                </motion.a>
 
                 <p className="text-center text-gray-700 font-orbitron text-[10px] tracking-[0.4em] uppercase">
                   EST. 2026 • YEAR OF THE HORSE

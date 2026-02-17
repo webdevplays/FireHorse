@@ -6,6 +6,7 @@ const Hero: React.FC = () => {
   const { t } = useLanguage();
   const title = t('heroTitle') || 'RIDE THE STORM';
   const titleWords = title.split(' ');
+  const buyLink = "https://jup.ag/swap/SOL-ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
 
   return (
     <section className="relative min-h-screen w-full flex flex-col md:flex-row items-center overflow-hidden pt-20">
@@ -96,13 +97,16 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start items-center">
-            <motion.button
+            <motion.a
+              href={buyLink}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)' }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-black font-orbitron font-bold rounded-full transition-shadow duration-300 tracking-wider text-sm shadow-[0_0_20px_rgba(249,115,22,0.3)]"
+              className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-black flex items-center justify-center font-orbitron font-bold rounded-full transition-shadow duration-300 tracking-wider text-sm shadow-[0_0_20px_rgba(249,115,22,0.3)]"
             >
               {t('buyBtn')}
-            </motion.button>
+            </motion.a>
             <motion.button
               whileHover={{ scale: 1.05, borderColor: 'rgba(249, 115, 22, 0.8)', backgroundColor: 'rgba(249, 115, 22, 0.05)' }}
               whileTap={{ scale: 0.95 }}
