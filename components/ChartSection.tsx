@@ -59,7 +59,7 @@ const ChartSection: React.FC = () => {
             </style>
             <div id="dexscreener-embed">
               <iframe 
-                src="https://dexscreener.com/solana/Fih1HyuroTaaEEWdZxQ3XwGTxx1LWJoQDPUqRXzxpump?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+                src="https://dexscreener.com/solana/AiomiDs69Xiqtvp1QFrSLweuTgMpJZffRXMiivqkxfkC?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
                 title="DexScreener Live Chart"
               ></iframe>
             </div>
