@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 const Footer: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const { t } = useLanguage();
-  const contractAddress = "0x0000000000000000000000000000000000000000";
+  const contractAddress = "ETn2sHiXgZQct5gqTfHsEp2x3FHp2MeCkvvXTUyopump";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -47,12 +47,12 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-4 w-full md:w-auto">
             <span className="text-gray-500 font-orbitron text-[10px] uppercase tracking-widest">{t('contract')} Address</span>
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <div className="w-full sm:w-80 px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-xs text-gray-400 flex items-center justify-center sm:justify-start">
-                {contractAddress.slice(0, 10)}...{contractAddress.slice(-10)}
+              <div className="w-full sm:w-auto px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-mono text-xs text-gray-400 flex items-center justify-center sm:justify-start">
+                {contractAddress.slice(0, 8)}...{contractAddress.slice(-8)}
               </div>
               <button 
                 onClick={handleCopy}
-                className="w-full sm:w-auto px-6 py-3 bg-orange-500 text-black font-orbitron font-bold text-xs rounded-xl hover:bg-orange-400 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 bg-orange-500 text-black font-orbitron font-bold text-xs rounded-xl hover:bg-orange-400 transition-colors whitespace-nowrap"
               >
                 {copied ? 'COPIED!' : 'COPY'}
               </button>
